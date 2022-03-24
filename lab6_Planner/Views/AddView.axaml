@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="650"
+		     Width="600" Height="650"
+             x:Class="lab6_Planner.Views.AddView">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"></RowDefinition>
+			<RowDefinition Height="500"></RowDefinition>
+			<RowDefinition Height="50"></RowDefinition>
+			<RowDefinition Height="50"></RowDefinition>
+		</Grid.RowDefinitions>
+		
+		<TextBox Text="{Binding $parent[Window].DataContext.Title}" Name="Title" Watermark="Введите название заметки" Grid.Row="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+		<TextBox Text="{Binding $parent[Window].DataContext.Description}" Name="Description" Watermark="Введите текст заметки"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True"   Grid.Row="1"   />
+		<Button Name="OK"    Grid.Row="2" Command="{Binding $parent[Window].DataContext.SavePlan}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >OK</Button>
+		<Button Name="Close" Grid.Row="3" Command="{Binding $parent[Window].DataContext.ChangeView}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >Cancel</Button>
+	</Grid>
+</UserControl>

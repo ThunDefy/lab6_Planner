@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="650"
+		     Width="600" Height="650"
+             x:Class="lab6_Planner.Views.MainView"
+			 Background="WhiteSmoke">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"/>
+			<RowDefinition Height="550"/>
+			<RowDefinition Height="50"/>
+		</Grid.RowDefinitions>
+
+		<DatePicker FontSize="20" Name="DatePicker1" SelectedDate="{Binding $parent[Window].DataContext.Date}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0"  />
+		
+		<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+			<ItemsControl Items="{Binding $parent[Window].DataContext.Items}"  Name="Items">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Grid RowDefinitions="50" ColumnDefinitions="500,50,50">
+							
+							<TextBlock Name="Title" Margin="5,5,5,5" Text="{Binding Title}" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Width="490" Height="50" Background="White" ></TextBlock>							
+							<Button   Grid.Column="1" Command="{Binding $parent[Window].DataContext.ViewExItem}" CommandParameter="{Binding}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+								<Image Source="/Assets/in_zoom.ico" />
+							</Button>
+							<Button  Grid.Column="2" Command="{Binding $parent[Window].DataContext.DeletePlan}" CommandParameter="{Binding}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+								<Image Source="/Assets/trash.ico" />
+							</Button>
+							
+						</Grid>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+		
+		<Button Grid.Row="2" Command="{Binding $parent[Window].DataContext.ChangeView}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+			<Image Source="/Assets/add.ico"  />
+		</Button>
+	</Grid>
+  
+</UserControl>
